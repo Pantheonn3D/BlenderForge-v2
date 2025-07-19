@@ -402,11 +402,11 @@ const ArticlePage = () => {
       {user && (
         <section className="support-platform-section">
           <h2 className="support-section-title">Enjoying the Content?</h2>
-          <p className="support-section-subtitle">Support BlenderForge to help us keep the platform running and ad-free.</p>
+          <p className="support-section-subtitle">Support BlenderForge with a $5 monthly donation to help us keep the platform running and ad-free. Get on the <Link to="/supporters" className="support-link">Supporters Page </Link></p>
           <SupportForm />
         </section>
       )}
-
+  
 
       {isAuthor && (
         <footer className="article-footer">
