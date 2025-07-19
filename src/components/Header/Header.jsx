@@ -98,9 +98,11 @@ const Header = React.memo(() => {
           <Icon path={isMobileMenuOpen ? ICONS.CLOSE : ICONS.MENU} />
         </button>
         <div className="header-actions">
+          {/*
           <ActionButton onClick={handleSearchClick} className="search-btn" ariaLabel="Search">
             <Icon path={ICONS.SEARCH} /><span>Search</span>
           </ActionButton>
+          */}
           {user ? (
             <>
               <ActionButton to={ROUTES.CREATE} className="create-btn" ariaLabel="Create new content">
@@ -152,9 +154,11 @@ const Header = React.memo(() => {
                 <Icon path={ICONS.USER} /><span>Sign In</span>
               </ActionButton>
             )}
+            {/*
             <ActionButton onClick={handleSearchClick} className="mobile-action-btn" ariaLabel="Search">
               <Icon path={ICONS.SEARCH} /><span>Search</span>
             </ActionButton>
+            */}
           </div>
         </nav>
       </div>
