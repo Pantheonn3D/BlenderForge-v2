@@ -1,0 +1,423 @@
+.article-card {
+  background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.article-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(243, 206, 2, 0.05) 0%, rgba(243, 206, 2, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.article-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(243, 206, 2, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(243, 206, 2, 0.1);
+}
+
+.article-card:hover::before {
+  opacity: 1;
+}
+
+.article-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.article-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.article-card-link:focus {
+  outline: none;
+}
+
+.article-card:focus-within {
+  outline: 2px solid #f3ce02;
+  outline-offset: 2px;
+}
+
+/* ================================================ */
+/* ============== IMAGE SECTION ================== */
+/* ================================================ */
+
+.article-card-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+}
+
+.article-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.article-card-image.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.article-card:hover .article-card-image {
+  transform: scale(1.08);
+}
+
+.image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+}
+
+.image-loader {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #f3ce02;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.article-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1em;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.article-card:hover .overlay-content {
+  transform: translateY(0);
+}
+
+.read-more-icon {
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover .read-more-icon {
+  transform: translateX(4px);
+}
+
+.category-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(243, 206, 2, 0.9);
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  z-index: 3;
+}
+
+/* ================================================ */
+/* ============== CONTENT SECTION ================ */
+/* ================================================ */
+
+.article-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.article-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 0.85em;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #a0a0a0;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.meta-item:hover {
+  color: #c0c0c0;
+}
+
+.meta-icon {
+  width: 14px;
+  height: 14px;
+  stroke-width: 1.5;
+  transition: all 0.3s ease;
+}
+
+.difficulty-item {
+  font-weight: 600;
+}
+
+.difficulty-icon {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.article-title {
+  color: #E0E0E0;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-card:hover .article-title {
+  color: #f3ce02;
+}
+
+.article-description {
+  color: #a0a0a0;
+  font-size: 0.95em;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-card-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.article-card-link-text {
+  color: #f3ce02;
+  font-weight: 600;
+  font-size: 0.9em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.link-arrow {
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover .article-card-link-text {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.article-card:hover .link-arrow {
+  transform: translate(4px, -4px);
+}
+
+/* ================================================ */
+/* ============== LOADING ANIMATION ============== */
+/* ================================================ */
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article-card {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ================================================ */
+/* ============== RESPONSIVE DESIGN ============== */
+/* ================================================ */
+
+@media (max-width: 768px) {
+  .article-card-image-container {
+    height: 200px;
+  }
+  
+  .article-card-content {
+    padding: 20px;
+  }
+  
+  .article-title {
+    font-size: 1.3em;
+  }
+  
+  .article-description {
+    font-size: 0.9em;
+  }
+  
+  .article-card-meta {
+    gap: 12px;
+  }
+  
+  .meta-item {
+    font-size: 0.8em;
+  }
+  
+  .category-badge {
+    top: 12px;
+    left: 12px;
+    font-size: 0.75em;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-card-image-container {
+    height: 180px;
+  }
+  
+  .article-card-content {
+    padding: 16px;
+  }
+  
+  .article-title {
+    font-size: 1.2em;
+  }
+  
+  .article-card-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .meta-item {
+    font-size: 0.8em;
+  }
+}
+
+/* ================================================ */
+/* ============== ACCESSIBILITY ================== */
+/* ================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .article-card,
+  .article-card-image,
+  .image-overlay,
+  .overlay-content,
+  .meta-item,
+  .article-title,
+  .article-card-link-text,
+  .link-arrow,
+  .read-more-icon {
+    transition: none;
+  }
+  
+  .article-card:hover {
+    transform: none;
+  }
+  
+  .article-card:hover .article-card-image {
+    transform: none;
+  }
+  
+  .image-loader {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .article-card {
+    border: 2px solid #fff;
+  }
+  
+  .article-card:hover {
+    border-color: #f3ce02;
+  }
+  
+  .article-title {
+    color: #fff;
+  }
+  
+  .article-description {
+    color: #ccc;
+  }
+  
+  .meta-item {
+    color: #ccc;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .article-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+  
+  .image-placeholder {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  }
+}

@@ -1,0 +1,18 @@
+.articles-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 4rem 2rem; /* 4rem top/bottom, 2rem left/right */
+}
+
+.loading-text {
+    color: #a0a0a0;
+    font-size: 1.1em;
+    padding-left: 0.5rem; /* Align with grid padding */
+}
+
+.articles-grid {
+    display: grid;
+    /* Create responsive columns that are at least 320px wide */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}

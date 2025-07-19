@@ -1,0 +1,971 @@
+
+
+.article-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 32px;
+}
+
+.article-content {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================================ */
+/* ============== LOADING & ERROR STATES ========== */
+/* ================================================ */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #f3ce02;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.error-icon {
+  color: #f44336;
+  margin-bottom: 20px;
+}
+
+.error-container h2 {
+  color: #E0E0E0;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.error-container p {
+  color: #a0a0a0;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+}
+
+/* ================================================ */
+/* ============== ARTICLE HEADER ================== */
+/* ================================================ */
+
+.article-header {
+  padding: 40px 40px 30px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.category-badge {
+  background: rgba(243, 206, 2, 0.1);
+  color: #f3ce02;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.difficulty-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.difficulty-beginner {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+.difficulty-intermediate {
+  background: rgba(255, 152, 0, 0.1);
+  color: #ff9800;
+}
+
+.difficulty-advanced {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+.read-time {
+  color: #a0a0a0;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.article-title {
+  font-size: 2.2em;
+  color: #E0E0E0;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+.article-description {
+  font-size: 1.3em;
+  color: #b0b0b0;
+  line-height: 1.5;
+  margin: 0 0 30px 0;
+  font-weight: 400;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.author-name-link {
+  color: #E0E0E0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: color 0.2s ease;
+}
+
+.author-name-link:hover {
+  color: #f3ce02;
+  text-decoration: underline;
+}
+
+.publish-date {
+  color: #a0a0a0;
+  font-size: 0.9em;
+}
+
+/* ================================================ */
+/* ============== ARTICLE HERO (FIXED) ============ */
+/* ================================================ */
+
+.article-hero {
+  position: relative;
+  overflow: hidden;
+  /* Creates a soft "bevel" or inner shadow to blend the image with the content */
+  box-shadow: inset 0 8px 8px -8px rgba(0,0,0,0.6), 
+              inset 0 -8px 8px -8px rgba(0,0,0,0.6);
+  border-radius: 16px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block; /* Prevents extra space below the image */
+}
+
+/* ================================================ */
+/* ============== ARTICLE CONTENT ================= */
+/* ================================================ */
+
+.article-body {
+  padding: 50px 40px;
+}
+
+.article-content-block {
+  margin-bottom: 2em;
+}
+
+/* ================================================ */
+/* ========= TEXT BLOCK FORMATTING (FIXED) ======== */
+/* ================================================ */
+
+.text-block {
+  /* Base typography reset for all content */
+  font-size: 1.15em !important;
+  line-height: 1.8 !important;
+  color: #c0c0c0 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Reset all possible elements that could be pasted */
+.text-block *,
+.text-block *::before,
+.text-block *::after {
+  /* Override any imported fonts */
+  font-family: inherit !important;
+  /* Override any imported colors */
+  color: inherit !important;
+  /* Reset any weird styling */
+  text-decoration: none !important;
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  /* Reset margins and padding */
+  margin: 0 !important;
+  padding: 0 !important;
+  /* Reset sizing */
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  /* Reset positioning */
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  /* Reset transforms */
+  transform: none !important;
+  /* Reset other properties */
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline !important;
+  float: none !important;
+  clear: none !important;
+}
+
+/* Specific element styling with proper spacing and typography */
+.text-block p {
+  display: block !important;
+  margin: 0 0 1.4em 0 !important;
+  padding: 0 !important;
+  color: #c0c0c0 !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: 400 !important;
+}
+
+.text-block h1,
+.text-block h2,
+.text-block h3,
+.text-block h4,
+.text-block h5,
+.text-block h6 {
+  display: block !important;
+  color: #E0E0E0 !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  margin: 2em 0 0.8em 0 !important;
+}
+
+.text-block h1 {
+  font-size: 1.9em !important;
+  border-bottom: 2px solid rgba(243, 206, 2, 0.3) !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 1em !important;
+}
+
+.text-block h2 {
+  font-size: 1.6em !important;
+}
+
+.text-block h3 {
+  font-size: 1.3em !important;
+}
+
+.text-block h4 {
+  font-size: 1.2em !important;
+}
+
+.text-block h5 {
+  font-size: 1.1em !important;
+}
+
+.text-block h6 {
+  font-size: 1em !important;
+}
+
+/* Links */
+.text-block a {
+  color: #f3ce02 !important;
+  text-decoration: underline !important;
+  background: transparent !important;
+  border: none !important;
+  display: inline !important;
+  font-weight: inherit !important;
+  transition: all 0.3s ease !important;
+}
+
+.text-block a:hover {
+  color: #fff !important;
+  text-decoration: underline !important;
+}
+
+/* Lists */
+.text-block ul,
+.text-block ol {
+  display: block !important;
+  margin: 1.5em 0 !important;
+  padding: 0 0 0 2em !important;
+  color: #c0c0c0 !important;
+  list-style-position: outside !important;
+}
+
+.text-block ul {
+  list-style-type: disc !important;
+}
+
+.text-block ol {
+  list-style-type: decimal !important;
+}
+
+.text-block li {
+  display: list-item !important;
+  margin: 0 0 0.5em 0 !important;
+  padding: 0 !important;
+  color: #c0c0c0 !important;
+  line-height: 1.6 !important;
+}
+
+/* Blockquotes */
+.text-block blockquote {
+  display: block !important;
+  margin: 2em 0 !important;
+  padding: 20px 30px !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+  border-left: 4px solid #f3ce02 !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-style: italic !important;
+  color: #d0d0d0 !important;
+  position: relative !important;
+}
+
+/* Code blocks */
+.text-block pre {
+  display: block !important;
+  background: #121212 !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  overflow-x: auto !important;
+  margin: 2em 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #e0e0e0 !important;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace !important;
+  font-size: 0.9em !important;
+  line-height: 1.4 !important;
+}
+
+.text-block code {
+  background: rgba(255, 255, 255, 0.1) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace !important;
+  font-size: 0.9em !important;
+  color: #e0e0e0 !important;
+  display: inline !important;
+}
+
+.text-block pre code {
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Emphasis */
+.text-block strong,
+.text-block b {
+  font-weight: 700 !important;
+  color: #e0e0e0 !important;
+  display: inline !important;
+}
+
+.text-block em,
+.text-block i {
+  font-style: italic !important;
+  display: inline !important;
+}
+
+.text-block u {
+  text-decoration: underline !important;
+  display: inline !important;
+}
+
+/* Remove any weird elements that might be pasted */
+.text-block span {
+  display: inline !important;
+  background: none !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
+}
+
+.text-block div {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Handle tables if pasted */
+.text-block table {
+  display: table !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 2em 0 !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.text-block table th,
+.text-block table td {
+  display: table-cell !important;
+  padding: 12px 15px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  text-align: left !important;
+  vertical-align: top !important;
+  color: #c0c0c0 !important;
+  background: none !important;
+}
+
+.text-block table th {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #e0e0e0 !important;
+  font-weight: 600 !important;
+}
+
+/* Remove any imported styles or classes */
+.text-block [class*="ql-"],
+.text-block [class*="Quill"],
+.text-block [class*="editor"],
+.text-block [style] {
+  all: unset !important;
+  display: inline !important;
+  font-family: inherit !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+/* Ensure line breaks work properly */
+.text-block br {
+  display: block !important;
+  margin: 0.5em 0 !important;
+  content: "" !important;
+}
+
+/* Handle any remaining inline elements */
+.text-block small {
+  font-size: 0.9em !important;
+  color: #a0a0a0 !important;
+  display: inline !important;
+}
+
+.text-block sub,
+.text-block sup {
+  font-size: 0.8em !important;
+  line-height: 0 !important;
+  position: relative !important;
+  vertical-align: baseline !important;
+}
+
+.text-block sub {
+  bottom: -0.25em !important;
+}
+
+.text-block sup {
+  top: -0.5em !important;
+}
+
+/* ================================================ */
+/* ============== IMAGE BLOCKS ==================== */
+/* ================================================ */
+
+.image-block {
+  margin: 3em 0;
+  text-align: center;
+}
+
+.image-block img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.image-block img:hover {
+  transform: scale(1.02);
+}
+
+.empty-content {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a0a0a0;
+}
+
+.empty-content p {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+/* ================================================ */
+/* ============== SUPPORT BLOCKS ================== */
+/* ================================================ */
+
+.support-block-display {
+  margin: 3em 0;
+}
+
+.support-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid var(--platform-color);
+  transition: all 0.3s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.support-icon {
+  font-size: 2em;
+  color: var(--platform-color);
+  flex-shrink: 0;
+}
+
+.support-content {
+  flex: 1;
+}
+
+.support-content h5 {
+  margin: 0 0 8px 0;
+  color: #E0E0E0;
+  font-size: 1.2em;
+}
+
+.support-content p {
+  margin: 0;
+  color: #a0a0a0;
+  font-size: 1em;
+}
+
+.support-button {
+  background: var(--platform-color);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.support-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================================ */
+/* ============== SOCIAL BLOCKS =================== */
+/* ================================================ */
+
+.social-block-display {
+  margin: 3em 0;
+}
+
+.social-card {
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.social-card h5 {
+  margin: 0 0 20px 0;
+  color: #E0E0E0;
+  font-size: 1.3em;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--platform-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.social-username {
+  opacity: 0.8;
+  font-size: 0.85em;
+}
+
+/* ================================================ */
+/* ============== CUSTOM LINK BLOCKS ============== */
+/* ================================================ */
+
+.custom-link-block-display {
+  margin: 3em 0;
+}
+
+.custom-link-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #f3ce02;
+  transition: all 0.3s ease;
+}
+
+.custom-link-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.custom-link-content {
+  flex: 1;
+}
+
+.custom-link-content h5 {
+  margin: 0 0 8px 0;
+  color: #E0E0E0;
+  font-size: 1.2em;
+}
+
+.custom-link-content p {
+  margin: 0;
+  color: #a0a0a0;
+  font-size: 1em;
+}
+
+.custom-link-button {
+  background: #f3ce02;
+  color: #1a1a1a;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.custom-link-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(243, 206, 2, 0.3);
+}
+
+/* ================================================ */
+/* ============== SUPPORT SECTION ================= */
+/* ================================================ */
+
+/* Main container for the support section */
+.support-platform-section {
+  margin-top: 5rem; /* Using rem units for better accessibility and scalability */
+  padding: 3rem; /* Increased padding for more whitespace */
+  background: #1a1a1a; /* A solid, slightly off-black for a modern feel */
+  border-radius: 20px; /* A slightly more pronounced border-radius */
+  border: 1px solid #333; /* A subtle border for definition */
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* A more prominent shadow for depth */
+  transition: all 0.3s ease-in-out; /* Smooth transition for any future hover effects */
+}
+
+/* Title of the support section */
+.support-section-title {
+  font-size: 2.2rem; /* Larger font size for clear hierarchy */
+  font-weight: 700; /* Bolder for more impact */
+  color: #ffffff; /* Pure white for high contrast */
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px; /* Tighter letter spacing for a modern look */
+}
+
+/* Subtitle of the support section */
+.support-section-subtitle {
+  color: #b0b0b0; /* A lighter grey for better readability */
+  margin-bottom: 2.5rem;
+  line-height: 1.7; /* Increased line-height for readability */
+  max-width: 600px; /* Slightly wider for better line flow */
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem; /* Slightly larger for better legibility */
+}
+
+/* Container for the support form */
+.support-form-container h2 {
+  font-size: 1.8rem; /* Adjusted for hierarchy */
+  font-weight: 600;
+  color: #f0f0f0; /* Slightly off-white */
+  margin-bottom: 1rem;
+}
+
+/* Paragraph text within the form container */
+.support-form-container p {
+  color: #b0b0b0;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styling for form groups */
+.support-form-container .form-group {
+  max-width: 500px; /* A bit wider for comfortable input fields */
+  margin: 0 auto 2rem auto;
+  text-align: left;
+}
+
+/* Adding styles for potential form elements for a complete look */
+.support-form-container .form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #c0c0c0;
+  font-weight: 500;
+}
+
+.support-form-container .form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: #252525;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: #f0f0f0;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.support-form-container .form-input:focus {
+  outline: none;
+  border-color: #007bff; /* Highlight color on focus */
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.support-form-container .submit-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.support-form-container .submit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+/* ================================================ */
+/* ============== ARTICLE FOOTER ================== */
+/* ================================================ */
+
+.article-footer {
+  padding: 30px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.author-actions {
+  display: flex;
+  justify-content: center; /* Horizontally centers the button(s) */
+  align-items: center;    /* Vertically aligns items if they have different heights */
+}
+
+/* Specific styling for the button inside author-actions */
+.author-actions button {
+  /* Visuals */
+  background-color: #5a1d1d; /* A dark, dangerous red */
+  color: #f7c5c5; /* A light, muted red for text */
+  border: 1px solid #8e2a2a;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+  /* Spacing & Font */
+  padding: 10px 20px;
+  font-size: 0.95em;
+  font-weight: 600;
+  
+  /* Layout */
+  display: inline-flex; /* Aligns icon and text nicely */
+  align-items: center;
+  gap: 8px;
+  
+  /* Interactivity */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover state to make the button more prominent */
+.author-actions button:hover {
+  background-color: #7a2828;
+  border-color: #b94040;
+  color: #ffffff;
+  transform: translateY(-2px); /* Lifts the button slightly */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for the SVG icon inside the button */
+.author-actions button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ================================================ */
+/* ============== RESPONSIVE DESIGN =============== */
+/* ================================================ */
+
+@media (max-width: 768px) {
+  .article-page-container {
+    padding: 20px 16px;
+  }
+  
+  .article-header {
+    padding: 30px 20px;
+  }
+  
+  .article-title {
+    font-size: 1.8em;
+  }
+  
+  .article-description {
+    font-size: 1.1em;
+  }
+  
+  .hero-image {
+    height: 250px;
+  }
+  
+  .article-body {
+    padding: 30px 20px;
+  }
+  
+  .article-footer {
+    padding: 20px;
+  }
+  
+  .text-block {
+    font-size: 1.1em !important;
+  }
+  
+  .text-block h1 {
+    font-size: 1.6em !important;
+  }
+  
+  .text-block h2 {
+    font-size: 1.4em !important;
+  }
+  
+  .text-block h3 {
+    font-size: 1.2em !important;
+  }
+  
+  .article-meta {
+    justify-content: center;
+  }
+  
+  .support-card,
+  .custom-link-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .support-platform-section {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-title {
+    font-size: 1.6em;
+  }
+  
+  .text-block {
+    font-size: 1em !important;
+  }
+  
+  .text-block h1 {
+    font-size: 1.4em !important;
+  }
+  
+  .text-block h2 {
+    font-size: 1.3em !important;
+  }
+  
+  .text-block h3 {
+    font-size: 1.2em !important;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

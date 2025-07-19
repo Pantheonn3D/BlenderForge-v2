@@ -1,0 +1,54 @@
+.image-block-container {
+  margin: 20px 0;
+}
+
+.image-block-placeholder {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+}
+
+.image-upload-label {
+  cursor: pointer;
+  color: #a0a0a0;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.image-upload-label:hover {
+  color: #f3ce02;
+}
+
+.image-block-preview {
+  position: relative;
+}
+.image-block-preview img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.image-remove-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(18, 18, 18, 0.8);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.image-remove-button:hover {
+  background: #e5534b;
+  transform: scale(1.1);
+}
+
+.image-upload-error {
+  color: #e5534b;
+  font-size: 0.9em;
+  margin-top: 10px;
+}

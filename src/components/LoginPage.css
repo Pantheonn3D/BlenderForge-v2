@@ -1,0 +1,185 @@
+/* ================================================ */
+/* ====== AUTHENTICATION PAGES (UNIFIED) ========== */
+/* ================================================ */
+
+/*
+  This single stylesheet is designed to work for BOTH the
+  Login and Sign Up pages for a consistent look and feel.
+*/
+
+:root {
+  --primary-color: #f3ce02;
+  --primary-glow: rgba(243, 206, 2, 0.15);
+  --primary-glow-focus: rgba(243, 206, 2, 0.25);
+  
+  --bg-color: #121212;
+  --surface-color: #1c1c1c;
+  --input-bg-color: #2c2c2e;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color-hover: rgba(243, 206, 2, 0.3);
+
+  --text-color: #E0E0E0;
+  --text-color-secondary: #a0a0a0;
+
+  --error-color: #f44336;
+  --error-bg-color: rgba(244, 67, 54, 0.1);
+
+  --border-radius: 16px;
+  --transition-speed: 0.3s;
+}
+
+/* --- Main Container --- */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 40px 20px;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Auth Card (The main panel) --- */
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-speed) ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-color-hover);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), 0 0 40px var(--primary-glow);
+}
+
+/* --- Title & Subtitle --- */
+.auth-title {
+  text-align: center;
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 0 15px var(--primary-glow);
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--text-color-secondary);
+  margin: 0 0 2.5rem 0;
+  font-size: 1.1em;
+}
+
+/* --- Form Elements (Covers both pages) --- */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Universal label styling */
+.form-group label {
+  display: block;
+  color: var(--text-color-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+/* Universal input styling for .form-input and .auth-input */
+.form-input,
+.auth-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 1rem;
+  box-sizing: border-box; /* Important for consistent sizing */
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-input:focus,
+.auth-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px var(--primary-glow-focus);
+}
+
+/* Universal button styling for all auth buttons */
+.form-button-primary,
+.auth-button {
+  width: 100%;
+  padding: 14px 24px;
+  background-color: var(--primary-color);
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-align: center;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.form-button-primary:hover,
+.auth-button:hover {
+  background-color: #ffe033; /* A brighter yellow on hover */
+  transform: translateY(-3px);
+}
+
+/* Disabled state for buttons */
+.form-button-primary:disabled,
+.auth-button:disabled {
+  background-color: #a0a0a0;
+  color: #555;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Error Messages --- */
+.error-message,
+.auth-error {
+  background-color: var(--error-bg-color);
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+/* --- Redirect Link --- */
+.auth-redirect {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.95em;
+  color: var(--text-color-secondary);
+}
+
+.auth-redirect a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.auth-redirect a:hover {
+  text-decoration: underline;
+}

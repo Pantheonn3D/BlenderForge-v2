@@ -1,0 +1,33 @@
+/* Import Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ================================================ */
+/* ============== BLENDERFORGE STYLES =============== */
+/* ================================================ */
+
+/* --- Base & Typography --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #121212;
+    color: #E0E0E0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* The signature dotty background from the original design */
+    background-image:
+        radial-gradient(circle at 1px 1px, rgba(224, 224, 224, 0.1) 1px, transparent 0);
+    background-size: 25px 25px;
+}
+
+a {
+    color: #f3ce02;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #ffd900;
+    text-decoration: underline;
+}

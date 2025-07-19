@@ -1,0 +1,89 @@
+/* src/components/ConfirmationModal.css */
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 18, 18, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #E0E0E0;
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #a0a0a0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.modal-close-button:hover {
+  color: #fff;
+}
+
+.modal-body {
+  padding: 24px;
+  color: #a0a0a0;
+  line-height: 1.6;
+  font-size: 1.05em;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Make buttons a bit smaller for modals */
+.modal-footer .form-button-secondary,
+.modal-footer .form-button-primary {
+  padding: 10px 20px;
+  font-size: 0.9em;
+}

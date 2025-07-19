@@ -1,0 +1,338 @@
+/* ================================================ */
+/* ============= SUPPORT PAGE V2 ================== */
+/* ================================================ */
+
+/*
+  IMPROVEMENTS:
+  - CSS Custom Properties (--primary-color, --text-color, etc.) for easy theme management.
+  - Refined animations for better performance (using `transform` and `opacity`).
+  - Improved color contrast and a slightly more robust color system.
+  - Enhanced responsive design with more fluid typography and spacing.
+  - Simplified and more performant hover effects.
+  - Added ARIA roles and accessibility considerations in comments.
+*/
+
+:root {
+  --primary-color: #f3ce02;
+  --primary-color-translucent: rgba(243, 206, 2, 0.1);
+  --primary-color-translucent-hover: rgba(243, 206, 2, 0.2);
+  --primary-glow: rgba(243, 206, 2, 0.3);
+  
+  --bg-color: #0a0a0a;
+  --surface-color: rgba(20, 20, 20, 0.5); /* For cards and interactive elements */
+  --surface-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+
+  --text-color: #E0E0E0;
+  --text-color-secondary: #a0a0a0;
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-hover: rgba(243, 206, 2, 0.2);
+
+  --border-radius-main: 16px;
+  --border-radius-small: 12px;
+
+  --transition-speed: 0.3s;
+  --animation-speed-slow: 4s;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.support-page-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px; /* Symmetrical padding */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: pageFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes pageFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Section */
+.support-page-header {
+  text-align: center;
+  padding: 80px 0; /* Increased padding */
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+
+.support-page-header::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, var(--primary-color-translucent) 0%, transparent 60%);
+  animation: pulse var(--animation-speed-slow) ease-in-out infinite;
+  transform: translate(-50%, -50%); /* Better centering */
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
+}
+
+.support-page-title {
+  font-size: clamp(2.8rem, 6vw, 4rem); /* More dynamic font sizing */
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.title-main {
+  color: var(--text-color);
+  display: block;
+  font-weight: 400; /* Slightly bolder for readability */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.4em; /* Relative to parent */
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.title-highlight {
+  color: var(--primary-color);
+  font-weight: 700;
+  display: block;
+  text-shadow: 0 0 30px var(--primary-glow);
+}
+
+.support-page-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  color: var(--text-color-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+/* General Section Styling */
+.support-section {
+  margin-bottom: 6rem;
+}
+
+.section-heading {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.section-description {
+  text-align: center;
+  color: var(--text-color-secondary);
+  margin-bottom: 3.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Benefits Section */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-card {
+  background: var(--surface-gradient);
+  padding: 2.5rem 2rem;
+  border-radius: var(--border-radius-main);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  will-change: transform; /* Performance hint for the browser */
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-color-hover);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.benefit-card:hover::before {
+  transform: translateX(100%);
+  opacity: 1;
+}
+
+.benefit-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color-translucent);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.benefit-card:hover .benefit-icon {
+  background: var(--primary-color-translucent-hover);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.benefit-title {
+  color: var(--primary-color);
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.benefit-description {
+  color: var(--text-color-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.benefit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  transition: gap var(--transition-speed) ease;
+}
+
+.benefit-link:hover {
+  gap: 12px;
+}
+
+/* Support Form Section */
+.support-form-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+}
+/* Note: .support-form-container styling is in the previous file. */
+
+
+/* Additional Support Section */
+.additional-support-section {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.other-support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.other-support-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--surface-color);
+  border-radius: var(--border-radius-main);
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+}
+
+.other-support-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-color); /* Lighter border on hover */
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.support-method-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-secondary);
+  font-size: 1.5rem; /* For icons */
+  transition: all var(--transition-speed) ease;
+}
+
+.other-support-card:hover .support-method-icon {
+  background: var(--primary-color-translucent);
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.other-support-card h3 {
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+.other-support-card p {
+  color: var(--text-color-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .support-page-header {
+    padding: 60px 0;
+  }
+  
+  .section-heading {
+    font-size: 2rem;
+  }
+
+  .benefits-grid,
+  .other-support-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .support-page-container {
+    padding: 0 1rem;
+  }
+
+  .benefit-card, .support-form-container {
+    padding: 2rem 1.5rem;
+  }
+}

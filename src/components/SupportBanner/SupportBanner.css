@@ -1,0 +1,164 @@
+/*
+  Reverted to the original yellow banner design,
+  with the hover underline effect completely removed as requested.
+*/
+
+.support-banner-wrapper {
+  position: relative;
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.support-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #f3ce02 0%, #f5d506 100%);
+  color: #121212;
+  padding: 12px 50px 12px 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer effect on hover */
+.support-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.support-banner:hover::before {
+  left: 100%;
+}
+
+.support-banner:hover {
+  background: linear-gradient(90deg, #f5d506 0%, #f7da0a 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(243, 206, 2, 0.3);
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.banner-text {
+  margin: 0;
+  font-size: 0.95em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.banner-text-normal {
+  color: rgba(18, 18, 18, 0.8);
+}
+
+/* This is the part we fixed */
+.banner-text-link {
+  font-weight: 700;
+  color: #121212;
+  white-space: nowrap;
+  /* The underline and its associated pseudo-elements have been removed. */
+}
+
+.banner-dismiss {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(18, 18, 18, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #121212;
+  padding: 0;
+}
+
+.banner-dismiss:hover {
+  background: rgba(18, 18, 18, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.banner-dismiss:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .support-banner {
+    padding: 12px 45px 12px 15px;
+  }
+  
+  .banner-text {
+    font-size: 0.9em;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .banner-text-normal,
+  .banner-text-link {
+    display: block;
+    text-align: center;
+  }
+  
+  .banner-dismiss {
+    width: 24px;
+    height: 24px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-text {
+    font-size: 0.85em;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .support-banner-wrapper,
+  .support-banner::before,
+  .support-banner,
+  .banner-dismiss {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .support-banner {
+    border: 2px solid #121212;
+  }
+  
+  .banner-dismiss {
+    border: 1px solid #121212;
+  }
+}

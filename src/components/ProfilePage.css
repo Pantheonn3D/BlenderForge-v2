@@ -1,0 +1,350 @@
+/* Profile Page Container */
+.profile-page-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 32px;
+  min-height: calc(100vh - 160px);
+}
+
+/* Loading States */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  color: #E0E0E0;
+  font-size: 1.1em;
+}
+
+/* Alert Messages */
+.error-message,
+.success-message {
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-weight: 500;
+  border-left: 4px solid;
+  animation: slideIn 0.3s ease-out;
+}
+
+.error-message {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #ff6b6b;
+  border-left-color: #ff6b6b;
+}
+
+.success-message {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border-left-color: #4caf50;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 40px;
+}
+
+.profile-avatar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #333;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.profile-avatar:hover {
+  border-color: #f3ce02;
+}
+
+.avatar-edit-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #f3ce02;
+  color: #121212;
+  border: 2px solid #121212;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-edit-button:hover {
+  transform: scale(1.1);
+  background-color: #f5d506;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.profile-header-info h1 {
+  margin: 0 0 8px 0;
+  font-size: 2.5em;
+  color: #E0E0E0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.profile-header-info p {
+  margin: 0;
+  color: #a0a0a0;
+  font-size: 1.1em;
+  font-weight: 400;
+}
+
+/* Profile Content */
+.profile-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 50px;
+}
+
+/* Form Styling */
+.profile-form {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.profile-form h2,
+.logout-section h2 {
+  font-size: 1.5em;
+  color: #E0E0E0;
+  margin: 0 0 24px 0;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.profile-form h2::after,
+.logout-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #f3ce02, #f5d506);
+  border-radius: 2px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #E0E0E0;
+  font-size: 0.95em;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #E0E0E0;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #f3ce02;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(243, 206, 2, 0.1);
+}
+
+.auth-input:disabled {
+  background: rgba(255, 255, 255, 0.02);
+  color: #777;
+  cursor: not-allowed;
+}
+
+.auth-input::placeholder {
+  color: #666;
+}
+
+/* Button Styling */
+.auth-button {
+  background: linear-gradient(135deg, #f3ce02, #f5d506);
+  color: #121212;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(243, 206, 2, 0.2);
+  min-width: 140px;
+}
+
+.auth-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(243, 206, 2, 0.3);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(243, 206, 2, 0.1);
+}
+
+/* Logout Section */
+.logout-section {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logout-section p {
+  color: #a0a0a0;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.logout-section .auth-button {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  width: auto;
+  align-self: flex-start;
+}
+
+.logout-section .auth-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-page-container {
+    margin: 20px auto;
+    padding: 0 16px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .profile-header-info h1 {
+    font-size: 2em;
+  }
+
+  .profile-content {
+    gap: 30px;
+  }
+
+  .profile-form,
+  .logout-section {
+    padding: 20px;
+  }
+
+  .auth-button {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .logout-section .auth-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-avatar-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .avatar-edit-button {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .profile-header-info h1 {
+    font-size: 1.8em;
+  }
+
+  .profile-form,
+  .logout-section {
+    padding: 16px;
+  }
+}
+
+/* Desktop Enhancement */
+@media (min-width: 1024px) {
+  .profile-content {
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .logout-section {
+    position: sticky;
+    top: 40px;
+  }
+}
+
+/* Dark theme enhancements */
+@media (prefers-color-scheme: dark) {
+  .profile-avatar {
+    border-color: #444;
+  }
+  
+  .auth-input {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .profile-form,
+  .logout-section {
+    background: rgba(255, 255, 255, 0.01);
+    border-color: rgba(255, 255, 255, 0.03);
+  }
+}
