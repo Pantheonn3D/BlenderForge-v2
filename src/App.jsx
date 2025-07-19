@@ -32,7 +32,7 @@ const LoadingSpinner = () => (
 // Enhanced Homepage Component
 const HomePage = () => {
   // <<< 2. THE HOOK IS PLACED HERE, INSIDE THE COMPONENT THAT USES IT
-  const { user } = useAuth(); 
+  const { user } = useAuth();
 
   useEffect(() => {
     document.title = 'The Ultimate Blender Hub - Assets, Art & Tutorials';
@@ -51,7 +51,7 @@ const HomePage = () => {
              Blender Hub
           </h1>
           <p className="hero-description">
-            Welcome to BlenderForge, your centralized place for assets, art, and tutorials. Find what you need to create 
+            Welcome to BlenderForge, your centralized place for assets, art, and tutorials. Find what you need to create
             stunning 3D content and join a community of passionate creators.
           </p>
           <div className="hero-actions">
@@ -63,8 +63,8 @@ const HomePage = () => {
               </svg>
             </Link>
             {/* This link will now work correctly */}
-            <Link 
-              to={user ? '/create' : '/login'} 
+            <Link
+              to={user ? '/create' : '/login'}
               className="hero-btn secondary"
             >
               <span>Create Article</span>
@@ -123,6 +123,18 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => (
 );
 
 function App() {
+  // --- START: ADDED FOR GOOGLE ANALYTICS PAGE TRACKING ---
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', 'G-PHVPQ5HVR5', {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
+  // --- END: GOOGLE ANALYTICS CODE ---
+
   useEffect(() => {
     const handleError = (event) => {
       console.error('Global error:', event.error);
@@ -142,7 +154,7 @@ function App() {
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <AuthProvider>
         <div className="app">
-         <SupportBanner /> 
+         <SupportBanner />
           <Header />
           <main className="main-content">
             <Suspense fallback={<LoadingSpinner />}>
@@ -153,21 +165,21 @@ function App() {
                   <Route path="/signup" element={<SignUpPage />} />
                   <Route path="/guides/:slug" element={<ArticlePage />} />
                   <Route path="/knowledge-base" element={<KnowledgeBase />} />
-                  <Route 
-                    path="/create" 
+                  <Route
+                    path="/create"
                     element={
                       <ProtectedRoute>
                         <ArticleCreator />
                       </ProtectedRoute>
-                    } 
+                    }
                   />
-                  <Route 
-                    path="/profile" 
+                  <Route
+                    path="/profile"
                     element={
                       <ProtectedRoute>
                         <ProfilePage />
                       </ProtectedRoute>
-                    } 
+                    }
                   />
                   <Route path="*" element={
                     <div className="not-found-page">
