@@ -1,0 +1,11 @@
+# Allow all friendly web crawlers
+User-agent: *
+Allow: /
+
+# Disallow crawlers from indexing specific pages you might not want in search results
+Disallow: /login
+Disallow: /signup
+Disallow: /profile
+
+# Location of your sitemap (you will create this next)
+Sitemap: https://www.blenderforge.com/sitemap.xml
