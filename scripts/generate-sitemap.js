@@ -47,8 +47,8 @@ const generateSitemap = async () => {
   }
 
   // 4. GENERATE THE XML
-  const sitemapXml = `
-<?xml version="1.0" encoding="UTF-8"?>
+  // --- THE FIX IS HERE: Move the XML declaration up to the first line ---
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${staticPages.map(page => `
   <url>
@@ -60,7 +60,7 @@ const generateSitemap = async () => {
   ${articles.map(article => `
   <url>
     <loc>${baseUrl}/guides/${article.slug}</loc>
-    <lastmod>${article.created_at ? new Date(article.created_at).toISOString().split('T')[0] : today}</lastmod> <!-- CHANGE IS HERE -->
+    <lastmod>${article.created_at ? new Date(article.created_at).toISOString().split('T') : today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`).join('')}
