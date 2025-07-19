@@ -1,0 +1,19 @@
+# .github/workflows/rebuild.yml
+
+name: Daily Sitemap Rebuild
+
+on:
+  schedule:
+    # This runs the job at 5:30 AM UTC every day.
+    # You can change the time. Use a cron job generator for help.
+    - cron: '30 5 * * *'
+  # This also allows you to run it manually from the Actions tab on GitHub
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify Build
+        # Sends a POST request to your secret build hook URL
+        run: curl -X POST -d '{}' ${{ secrets.NETLIFY_BUILD_HOOK }}
